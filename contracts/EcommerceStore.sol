@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.6.21;
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract EcommerceStore {
     enum ProductStatus {
@@ -77,33 +78,41 @@ contract EcommerceStore {
     function getProduct(uint256 _productId)
         public
         view
-        returns (
-            uint256,
-            string memory,
-            string memory,
-            string memory,
-            string memory,
-            uint256,
-            uint256,
-            uint256,
-            ProductStatus,
-            ProductCondition
-        )
+        returns (string[10] memory, string[10] memory)
     {
         Product storage product = stores[productIdInStore[_productId]][
             _productId
         ];
-        return (
-            product.id,
+
+        string[10] memory returnNames = [
+            "id",
+            "name",
+            "category",
+            "imageLink",
+            "descLink",
+            "auctionStartTime",
+            "auctionEndTime",
+            "startPrice",
+            "status",
+            "condition"
+        ];
+
+        string[10] memory returnData = [
+            Strings.toString(product.id),
             product.name,
             product.category,
             product.imageLink,
             product.descLink,
-            product.auctionStartTime,
-            product.auctionEndTime,
-            product.startPrice,
-            product.status,
-            product.condition
+            Strings.toString(product.auctionStartTime),
+            Strings.toString(product.auctionEndTime),
+            Strings.toString(product.startPrice),
+            Strings.toString(uint(product.status)),
+            Strings.toString(uint(product.condition))
+        ];
+
+        return (
+            returnNames,
+            returnData
         );
     }
 
