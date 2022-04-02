@@ -59,20 +59,40 @@ export default defineComponent({
   },
   render() {
     return (
-      <div>
+      <div class=" ">
         <Button>上传商品</Button>
+        <p class="text-re-700 print:text-black  container mx-auto px-4">Test</p>
         <div class={'products'}>
           {this.products.map((product) => (
-              <div class={'product-container'}>
-                <img src={"http://127.0.0.1:8080/ipfs/QmcZpHz83mcecpmiSnHd1miuF1jxh6sZhth8JCLUvpyCtq"} style={{width: '150px'}} alt="" />
-                <p>{product.name}</p>
-                <p>{product.category}</p>
-                <p>{product.startPrice}</p>
-                {/* <p>{product.name}</p>
+            <div class={'product-container'}>
+              <img
+                src={
+                  'http://127.0.0.1:8080/ipfs/QmcZpHz83mcecpmiSnHd1miuF1jxh6sZhth8JCLUvpyCtq'
+                }
+                style={{ width: '150px' }}
+                alt=""
+              />
+              <p>{product.name}</p>
+              <p>{product.category}</p>
+              <p>{product.startPrice}</p>
+              {/* <p>{product.name}</p>
                 <p>{product.name}</p> */}
-              </div>
+            </div>
           ))}
         </div>
+        <div class="space-y-4">
+          <span class="block ">1</span>
+          <span class="block">2</span>
+          <span class="block">3</span>
+        </div>
+        {/* <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+          <div class="flex-shrink-0">
+          </div>
+          <div>
+            <div class="text-xl font-medium text-black">ChitChat</div>
+            <p class="text-gray-500">You have a new message!</p>
+          </div>
+        </div> */}
       </div>
     )
   },
